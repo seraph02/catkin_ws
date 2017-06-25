@@ -30,6 +30,7 @@
         <joint name="big_arm_up_to_axis" />
         <joint name="small_arm_up_to_axis" />
         <joint name="wrist_run_stevo_to_axis" />
+        <chain base_link="shoulder_stevo" tip_link="wrist_run_stevo_axis" />
     </group>
     <group name="left_hand">
         <link name="hand_run_stevo" />
