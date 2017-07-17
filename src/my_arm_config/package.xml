@@ -1,12 +1,12 @@
 <package>
 
-  <name>moveit_myarm_config</name>
+  <name>my_arm_config</name>
   <version>0.3.0</version>
   <description>
-     An automatically generated package with all the configuration and launch files for using the six_arm with the MoveIt! Motion Planning Framework
+     An automatically generated package with all the configuration and launch files for using the my_arm with the MoveIt! Motion Planning Framework
   </description>
-  <author email="s@s.com">s</author>
-  <maintainer email="s@s.com">s</maintainer>
+  <author email="87283453@qq.com">ser</author>
+  <maintainer email="87283453@qq.com">ser</maintainer>
 
   <license>BSD</license>
 

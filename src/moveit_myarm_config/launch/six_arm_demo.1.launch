@@ -1,6 +1,0 @@
-<launch>
-
-     <node name="six_follow_controller" pkg="ros_arduino_python" type="six_arm_follow_controller.py" output="screen">
-     </node>
-    
-</launch>
