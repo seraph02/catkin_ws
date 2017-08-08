@@ -1,6 +1,6 @@
 <package>
 
-  <name>moveit_myarm_config</name>
+  <name>myarm_moveit_config</name>
   <version>0.3.0</version>
   <description>
      An automatically generated package with all the configuration and launch files for using the six_arm with the MoveIt! Motion Planning Framework

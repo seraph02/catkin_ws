@@ -25,37 +25,51 @@
         <link name="small_arm_down" />
         <link name="small_arm_middle" />
         <link name="big_arm_down" />
-        <joint name="body_to_left_shoulder_joint" />
+        <joint name="shoulder_stevo_to_axis" />
         <joint name="shoulder_stevo_lift_to_axis" />
         <joint name="big_arm_up_to_axis" />
         <joint name="small_arm_up_to_axis" />
         <joint name="wrist_run_stevo_to_axis" />
-        <chain base_link="shoulder_stevo" tip_link="wrist_run_stevo_axis" />
+        <chain base_link="shoulder_stevo" tip_link="hand_run_stevo" />
     </group>
     <group name="left_hand">
         <link name="hand_run_stevo" />
         <link name="hand_run_stevo_axis" />
         <link name="finger" />
         <joint name="hand_run_stevo_to_hand_run_stevo_axis" />
+        <chain base_link="hand_run_stevo_axis" tip_link="finger" />
     </group>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
-    <end_effector name="left_eff" parent_link="wrist_run_stevo_axis" group="left_hand" />
+    <end_effector name="left_eff" parent_link="wrist_run_stevo_axis" group="left_hand" parent_group="left_arm" />
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
-    <virtual_joint name="world_joint" type="planar" parent_frame="world_frame" child_link="base_link" />
+    <virtual_joint name="world_joint" type="fixed" parent_frame="world_frame" child_link="base_link" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="arm_stevo" link2="arm_stevo_axis" reason="Adjacent" />
+    <disable_collisions link1="arm_stevo" link2="base_link" reason="Never" />
     <disable_collisions link1="arm_stevo" link2="big_arm_down" reason="Never" />
     <disable_collisions link1="arm_stevo" link2="big_arm_up" reason="Never" />
+    <disable_collisions link1="arm_stevo" link2="body" reason="Never" />
+    <disable_collisions link1="arm_stevo" link2="finger" reason="Never" />
+    <disable_collisions link1="arm_stevo" link2="hand_run_stevo" reason="Never" />
+    <disable_collisions link1="arm_stevo" link2="hand_run_stevo_axis" reason="Never" />
+    <disable_collisions link1="arm_stevo" link2="shoulder_stevo" reason="Never" />
     <disable_collisions link1="arm_stevo" link2="shoulder_stevo_axis" reason="Never" />
     <disable_collisions link1="arm_stevo" link2="shoulder_stevo_lift" reason="Never" />
     <disable_collisions link1="arm_stevo" link2="shoulder_stevo_lift_axis" reason="Never" />
     <disable_collisions link1="arm_stevo" link2="small_arm_down" reason="Never" />
     <disable_collisions link1="arm_stevo" link2="small_arm_middle" reason="Default" />
     <disable_collisions link1="arm_stevo" link2="small_arm_up" reason="Adjacent" />
+    <disable_collisions link1="arm_stevo" link2="wrist_run_stevo" reason="Never" />
+    <disable_collisions link1="arm_stevo" link2="wrist_run_stevo_axis" reason="Never" />
     <disable_collisions link1="arm_stevo" link2="wrist_stevo" reason="Never" />
     <disable_collisions link1="arm_stevo" link2="wrist_stevo_axis" reason="Never" />
+    <disable_collisions link1="arm_stevo_axis" link2="base_link" reason="Never" />
     <disable_collisions link1="arm_stevo_axis" link2="big_arm_down" reason="Default" />
     <disable_collisions link1="arm_stevo_axis" link2="big_arm_up" reason="Adjacent" />
+    <disable_collisions link1="arm_stevo_axis" link2="body" reason="Never" />
+    <disable_collisions link1="arm_stevo_axis" link2="finger" reason="Never" />
+    <disable_collisions link1="arm_stevo_axis" link2="hand_run_stevo" reason="Never" />
+    <disable_collisions link1="arm_stevo_axis" link2="hand_run_stevo_axis" reason="Never" />
     <disable_collisions link1="arm_stevo_axis" link2="shoulder_stevo" reason="Never" />
     <disable_collisions link1="arm_stevo_axis" link2="shoulder_stevo_axis" reason="Never" />
     <disable_collisions link1="arm_stevo_axis" link2="shoulder_stevo_lift" reason="Never" />
@@ -67,45 +81,97 @@
     <disable_collisions link1="arm_stevo_axis" link2="wrist_run_stevo_axis" reason="Never" />
     <disable_collisions link1="arm_stevo_axis" link2="wrist_stevo" reason="Never" />
     <disable_collisions link1="arm_stevo_axis" link2="wrist_stevo_axis" reason="Never" />
+    <disable_collisions link1="base_link" link2="big_arm_down" reason="Never" />
+    <disable_collisions link1="base_link" link2="big_arm_up" reason="Never" />
     <disable_collisions link1="base_link" link2="body" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="finger" reason="Never" />
+    <disable_collisions link1="base_link" link2="hand_run_stevo" reason="Never" />
+    <disable_collisions link1="base_link" link2="hand_run_stevo_axis" reason="Never" />
     <disable_collisions link1="base_link" link2="shoulder_stevo" reason="Never" />
     <disable_collisions link1="base_link" link2="shoulder_stevo_axis" reason="Never" />
     <disable_collisions link1="base_link" link2="shoulder_stevo_lift" reason="Never" />
     <disable_collisions link1="base_link" link2="shoulder_stevo_lift_axis" reason="Never" />
+    <disable_collisions link1="base_link" link2="small_arm_down" reason="Never" />
+    <disable_collisions link1="base_link" link2="small_arm_middle" reason="Never" />
+    <disable_collisions link1="base_link" link2="small_arm_up" reason="Never" />
+    <disable_collisions link1="base_link" link2="wrist_run_stevo" reason="Never" />
+    <disable_collisions link1="base_link" link2="wrist_run_stevo_axis" reason="Never" />
+    <disable_collisions link1="base_link" link2="wrist_stevo" reason="Never" />
+    <disable_collisions link1="base_link" link2="wrist_stevo_axis" reason="Never" />
     <disable_collisions link1="big_arm_down" link2="big_arm_up" reason="Adjacent" />
+    <disable_collisions link1="big_arm_down" link2="body" reason="Never" />
+    <disable_collisions link1="big_arm_down" link2="finger" reason="Never" />
     <disable_collisions link1="big_arm_down" link2="hand_run_stevo" reason="Never" />
     <disable_collisions link1="big_arm_down" link2="hand_run_stevo_axis" reason="Never" />
     <disable_collisions link1="big_arm_down" link2="shoulder_stevo" reason="Never" />
     <disable_collisions link1="big_arm_down" link2="shoulder_stevo_axis" reason="Never" />
     <disable_collisions link1="big_arm_down" link2="shoulder_stevo_lift" reason="Never" />
     <disable_collisions link1="big_arm_down" link2="shoulder_stevo_lift_axis" reason="Default" />
+    <disable_collisions link1="big_arm_down" link2="small_arm_down" reason="Never" />
+    <disable_collisions link1="big_arm_down" link2="small_arm_middle" reason="Never" />
     <disable_collisions link1="big_arm_down" link2="small_arm_up" reason="Never" />
     <disable_collisions link1="big_arm_down" link2="wrist_run_stevo" reason="Never" />
     <disable_collisions link1="big_arm_down" link2="wrist_run_stevo_axis" reason="Never" />
     <disable_collisions link1="big_arm_down" link2="wrist_stevo" reason="Never" />
+    <disable_collisions link1="big_arm_down" link2="wrist_stevo_axis" reason="Never" />
+    <disable_collisions link1="big_arm_up" link2="body" reason="Never" />
+    <disable_collisions link1="big_arm_up" link2="finger" reason="Never" />
+    <disable_collisions link1="big_arm_up" link2="hand_run_stevo" reason="Never" />
+    <disable_collisions link1="big_arm_up" link2="hand_run_stevo_axis" reason="Never" />
+    <disable_collisions link1="big_arm_up" link2="shoulder_stevo" reason="Never" />
     <disable_collisions link1="big_arm_up" link2="shoulder_stevo_axis" reason="Never" />
     <disable_collisions link1="big_arm_up" link2="shoulder_stevo_lift" reason="Never" />
     <disable_collisions link1="big_arm_up" link2="shoulder_stevo_lift_axis" reason="Adjacent" />
     <disable_collisions link1="big_arm_up" link2="small_arm_down" reason="Never" />
+    <disable_collisions link1="big_arm_up" link2="small_arm_middle" reason="Never" />
+    <disable_collisions link1="big_arm_up" link2="small_arm_up" reason="Never" />
     <disable_collisions link1="big_arm_up" link2="wrist_run_stevo" reason="Never" />
     <disable_collisions link1="big_arm_up" link2="wrist_run_stevo_axis" reason="Never" />
     <disable_collisions link1="big_arm_up" link2="wrist_stevo" reason="Never" />
+    <disable_collisions link1="big_arm_up" link2="wrist_stevo_axis" reason="Never" />
+    <disable_collisions link1="body" link2="finger" reason="Never" />
+    <disable_collisions link1="body" link2="hand_run_stevo" reason="Never" />
+    <disable_collisions link1="body" link2="hand_run_stevo_axis" reason="Never" />
     <disable_collisions link1="body" link2="shoulder_stevo" reason="Adjacent" />
     <disable_collisions link1="body" link2="shoulder_stevo_axis" reason="Default" />
     <disable_collisions link1="body" link2="shoulder_stevo_lift" reason="Never" />
     <disable_collisions link1="body" link2="shoulder_stevo_lift_axis" reason="Never" />
+    <disable_collisions link1="body" link2="small_arm_down" reason="Never" />
+    <disable_collisions link1="body" link2="small_arm_middle" reason="Never" />
+    <disable_collisions link1="body" link2="small_arm_up" reason="Never" />
+    <disable_collisions link1="body" link2="wrist_run_stevo" reason="Never" />
+    <disable_collisions link1="body" link2="wrist_run_stevo_axis" reason="Never" />
+    <disable_collisions link1="body" link2="wrist_stevo" reason="Never" />
+    <disable_collisions link1="body" link2="wrist_stevo_axis" reason="Never" />
     <disable_collisions link1="finger" link2="hand_run_stevo" reason="Never" />
     <disable_collisions link1="finger" link2="hand_run_stevo_axis" reason="Adjacent" />
+    <disable_collisions link1="finger" link2="shoulder_stevo" reason="Never" />
+    <disable_collisions link1="finger" link2="shoulder_stevo_axis" reason="Never" />
+    <disable_collisions link1="finger" link2="shoulder_stevo_lift" reason="Never" />
+    <disable_collisions link1="finger" link2="shoulder_stevo_lift_axis" reason="Never" />
+    <disable_collisions link1="finger" link2="small_arm_down" reason="Never" />
+    <disable_collisions link1="finger" link2="small_arm_middle" reason="Never" />
+    <disable_collisions link1="finger" link2="small_arm_up" reason="Never" />
+    <disable_collisions link1="finger" link2="wrist_run_stevo" reason="Never" />
     <disable_collisions link1="finger" link2="wrist_run_stevo_axis" reason="Never" />
     <disable_collisions link1="finger" link2="wrist_stevo" reason="Never" />
     <disable_collisions link1="finger" link2="wrist_stevo_axis" reason="Never" />
     <disable_collisions link1="hand_run_stevo" link2="hand_run_stevo_axis" reason="Adjacent" />
+    <disable_collisions link1="hand_run_stevo" link2="shoulder_stevo" reason="Never" />
+    <disable_collisions link1="hand_run_stevo" link2="shoulder_stevo_axis" reason="Never" />
+    <disable_collisions link1="hand_run_stevo" link2="shoulder_stevo_lift" reason="Never" />
+    <disable_collisions link1="hand_run_stevo" link2="shoulder_stevo_lift_axis" reason="Never" />
     <disable_collisions link1="hand_run_stevo" link2="small_arm_down" reason="Never" />
     <disable_collisions link1="hand_run_stevo" link2="small_arm_middle" reason="Never" />
+    <disable_collisions link1="hand_run_stevo" link2="small_arm_up" reason="Never" />
     <disable_collisions link1="hand_run_stevo" link2="wrist_run_stevo" reason="Never" />
     <disable_collisions link1="hand_run_stevo" link2="wrist_run_stevo_axis" reason="Adjacent" />
     <disable_collisions link1="hand_run_stevo" link2="wrist_stevo" reason="Never" />
     <disable_collisions link1="hand_run_stevo" link2="wrist_stevo_axis" reason="Never" />
+    <disable_collisions link1="hand_run_stevo_axis" link2="shoulder_stevo" reason="Never" />
+    <disable_collisions link1="hand_run_stevo_axis" link2="shoulder_stevo_axis" reason="Never" />
+    <disable_collisions link1="hand_run_stevo_axis" link2="shoulder_stevo_lift" reason="Never" />
+    <disable_collisions link1="hand_run_stevo_axis" link2="shoulder_stevo_lift_axis" reason="Never" />
     <disable_collisions link1="hand_run_stevo_axis" link2="small_arm_down" reason="Never" />
     <disable_collisions link1="hand_run_stevo_axis" link2="small_arm_middle" reason="Never" />
     <disable_collisions link1="hand_run_stevo_axis" link2="small_arm_up" reason="Never" />
@@ -117,18 +183,35 @@
     <disable_collisions link1="shoulder_stevo" link2="shoulder_stevo_lift" reason="Never" />
     <disable_collisions link1="shoulder_stevo" link2="shoulder_stevo_lift_axis" reason="Never" />
     <disable_collisions link1="shoulder_stevo" link2="small_arm_down" reason="Never" />
+    <disable_collisions link1="shoulder_stevo" link2="small_arm_middle" reason="Never" />
+    <disable_collisions link1="shoulder_stevo" link2="small_arm_up" reason="Never" />
+    <disable_collisions link1="shoulder_stevo" link2="wrist_run_stevo" reason="Never" />
+    <disable_collisions link1="shoulder_stevo" link2="wrist_run_stevo_axis" reason="Never" />
+    <disable_collisions link1="shoulder_stevo" link2="wrist_stevo" reason="Never" />
+    <disable_collisions link1="shoulder_stevo" link2="wrist_stevo_axis" reason="Never" />
     <disable_collisions link1="shoulder_stevo_axis" link2="shoulder_stevo_lift" reason="Adjacent" />
     <disable_collisions link1="shoulder_stevo_axis" link2="shoulder_stevo_lift_axis" reason="Never" />
     <disable_collisions link1="shoulder_stevo_axis" link2="small_arm_down" reason="Never" />
     <disable_collisions link1="shoulder_stevo_axis" link2="small_arm_middle" reason="Never" />
     <disable_collisions link1="shoulder_stevo_axis" link2="small_arm_up" reason="Never" />
+    <disable_collisions link1="shoulder_stevo_axis" link2="wrist_run_stevo" reason="Never" />
+    <disable_collisions link1="shoulder_stevo_axis" link2="wrist_run_stevo_axis" reason="Never" />
+    <disable_collisions link1="shoulder_stevo_axis" link2="wrist_stevo" reason="Never" />
+    <disable_collisions link1="shoulder_stevo_axis" link2="wrist_stevo_axis" reason="Never" />
     <disable_collisions link1="shoulder_stevo_lift" link2="shoulder_stevo_lift_axis" reason="Adjacent" />
     <disable_collisions link1="shoulder_stevo_lift" link2="small_arm_down" reason="Never" />
     <disable_collisions link1="shoulder_stevo_lift" link2="small_arm_middle" reason="Never" />
     <disable_collisions link1="shoulder_stevo_lift" link2="small_arm_up" reason="Never" />
+    <disable_collisions link1="shoulder_stevo_lift" link2="wrist_run_stevo" reason="Never" />
+    <disable_collisions link1="shoulder_stevo_lift" link2="wrist_run_stevo_axis" reason="Never" />
+    <disable_collisions link1="shoulder_stevo_lift" link2="wrist_stevo" reason="Never" />
+    <disable_collisions link1="shoulder_stevo_lift" link2="wrist_stevo_axis" reason="Never" />
     <disable_collisions link1="shoulder_stevo_lift_axis" link2="small_arm_down" reason="Never" />
     <disable_collisions link1="shoulder_stevo_lift_axis" link2="small_arm_middle" reason="Never" />
     <disable_collisions link1="shoulder_stevo_lift_axis" link2="small_arm_up" reason="Never" />
+    <disable_collisions link1="shoulder_stevo_lift_axis" link2="wrist_run_stevo" reason="Never" />
+    <disable_collisions link1="shoulder_stevo_lift_axis" link2="wrist_run_stevo_axis" reason="Never" />
+    <disable_collisions link1="shoulder_stevo_lift_axis" link2="wrist_stevo" reason="Never" />
     <disable_collisions link1="shoulder_stevo_lift_axis" link2="wrist_stevo_axis" reason="Never" />
     <disable_collisions link1="small_arm_down" link2="small_arm_middle" reason="Default" />
     <disable_collisions link1="small_arm_down" link2="small_arm_up" reason="Adjacent" />
@@ -138,6 +221,7 @@
     <disable_collisions link1="small_arm_down" link2="wrist_stevo_axis" reason="Default" />
     <disable_collisions link1="small_arm_middle" link2="small_arm_up" reason="Adjacent" />
     <disable_collisions link1="small_arm_middle" link2="wrist_run_stevo" reason="Never" />
+    <disable_collisions link1="small_arm_middle" link2="wrist_run_stevo_axis" reason="Never" />
     <disable_collisions link1="small_arm_middle" link2="wrist_stevo" reason="Never" />
     <disable_collisions link1="small_arm_middle" link2="wrist_stevo_axis" reason="Never" />
     <disable_collisions link1="small_arm_up" link2="wrist_run_stevo" reason="Never" />

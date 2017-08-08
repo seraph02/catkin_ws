@@ -1,9 +1,9 @@
 {
 	"activePkgName": [
 		"myarm_moveit_config",
-		"moveit_myarm_config",
 		"myarm",
 		"ros_arduino_python",
-		"ros_arduino_bridge"
+		"ros_arduino_bridge",
+		"moveit_One_arm_config"
 	]
 }
