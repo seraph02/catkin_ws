@@ -13,8 +13,8 @@
          <arg name="load_robot_description" value="true"/>
      </include>
 
-     <node name="arduino_follow_controller" pkg="ros_arduino_python" type="src/ros_arduino_python/six_arm_follow_controller.py" output="screen">
-     </node>
+     <!--<node name="arduino_follow_controller" pkg="ros_arduino_python" type="six_arm_follow_controller.py" output="screen">
+     </node>-->
 
      <!-- If needed, broadcast static tf for robot root -->
      <node pkg="tf" type="static_transform_publisher" name="virtual_joint_broadcaster_0" args="0 0 0 0 0 0 world_frame base_link 100" />
@@ -24,6 +24,12 @@
         <param name="/use_gui" value="false"/>
         <rosparam param="/source_list">[/move_group/fake_controller_joint_states]</rosparam>
      </node>-->
+
+       <!-- Run Rviz and load the default config to see the state of the move_group node -->
+  <include file="$(find myarm_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="config" value="true"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
 
      <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
      <include file="$(find myarm_moveit_config)/launch/move_group.launch">
